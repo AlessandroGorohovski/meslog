@@ -60,9 +60,18 @@ OPTIONS:
 
 :star: *--help* - вывод справки.
 
-**Примечание**:
+**Примечания**:
 
 Необходим файл конфигурации БД *local_settings.json* (или указанный через *--cfg_db*).
+
+Для работы скрипта нужны следующие модули (пакеты):
+```perl
+use File::Spec;
+use Getopt::Long;
+use Email::Valid;
+use JSON;
+use DBI;
+```
 
 ***
 
@@ -90,4 +99,16 @@ grep -n webmeslog.pl index.html
 
 ```perl
 my $CFG_DB = 'local_settings.json';	# must be installed
+```
+
+**Примечания**:
+
+Необходим файл конфигурации БД *local_settings.json*.
+
+Для работы скрипта нужны следующие модули (пакеты):
+```perl
+use CGI;
+use Email::Valid;
+use JSON;
+use DBI;
 ```
