@@ -7,10 +7,8 @@ Determining the length of some text fields of tables
 and creating database tables
 COMMENT
 
-logFile=mailog.out
-
-DBname=meslogDB
-user=alessandro
+logFile=mailog.out # log-файл, который служит для наполнения таблиц БД
+user=alessandro # пользователь БД
 
 echo "Check all non-ASCII characters:"
 grep --color='auto' -P -n "[\x80-\xFF]" $logFile | wc -l
@@ -31,9 +29,9 @@ echo "Search max length of address"
 perl -naE '$a=length$F[4];$m=$a if$m<$a;END{say$m}' $logFile
 ## 39
 
-read -s -p "Enter PASSWORD for '$DBname': " pswd
+read -s -p "Enter PASSWORD for MySQL access: " pswd
 
-mysql $DBname -p$pswd -u $user < create_meslogDB.sql
+mysql -p$pswd -u $user < create_meslogDB.sql
 
 exit 0
 
